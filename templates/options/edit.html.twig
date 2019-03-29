@@ -1,0 +1,9 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+{{form_start(form)}}
+{{form_end(form)}}
+
+	<div>
+		<a href="{{path('options_show')}}">Wróć do opcji</a>
+	</div>
+{% endblock %}
