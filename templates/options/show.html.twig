@@ -1,0 +1,51 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+<div class="jumbotron">
+  <h1 class="text-center"><b>OPCJE</b></h1>
+
+  {% for options in gasOptions%}
+  <table class="table">
+    <tr>
+      <td>
+        <p><b>DATA NOTOWANIA</b></p>
+        <h3>{{options.getFormatDate()}}</h3>
+      </td> 
+    </tr>  
+    <tr>
+      <td>
+        <p><b>STAN LICZNIKA</b></p>
+        <h3>{{options.lastMeterStatus}}</h3>
+      </td> 
+    </tr>  
+    <tr>
+      <td>
+        <p><b>CENA GAZU</b></p>
+        <h3>{{options.gasPrice}}</h3>
+      </td> 
+    </tr>  
+    <tr>
+      <td>
+        <p><b>CENA ABONAMENTU</b></p>
+        <h3>{{options.subscription}}</h3>
+      </td> 
+    </tr>
+    <tr>
+      <td>
+        <p><b>CENA PRZESYŁU STAŁEGO (dni)</b></p>
+        <h3>{{options.distributionConstant}}</h3>
+      </td> 
+    </tr>
+    <tr>
+      <td>
+        <p><b>CENA PRZESYŁU ZMIENNEGO (M<sup>3</sup>)</b></p>
+        <h3>{{options.distributionVariable}}</h3>
+      </td> 
+    </tr>
+    <tr>
+      <td>
+        <a href="{{path('options_edit', {'id':options.id})}}"><button type="button" class="btn btn-success btn-lg">Edytuj</button></a>
+      </td> 
+    </tr>  
+  </table>
+  {%endfor%}
+{% endblock %}

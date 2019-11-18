@@ -1,0 +1,30 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+	<table class="table table-hover">
+	  <tr class="table-active">
+	    <th>Początkowa data</th>
+	    <th>Bieżąca data</th> 
+	    <th>Początkowy wskaźnik</th>
+	    <th>Bieżący wskaźnik</th>
+	    <th>Do zapłaty</th>
+	    <th>Średnie zużycie m<sup>3</sup></th>
+	    <th>Średnie zużycie kWh</th>
+	    <th>Akcje</th>
+	  </tr>
+{% for report in gasReports %}
+	  <tr>
+	    <td>{{report.getLastDateFormat()}}</td>
+	    <td>{{report.getPresentDateFormat()}}</td>
+	    <td>{{report.lastMeterStatus}}</td>
+	    <td>{{report.presentMeterStatus}}</td>
+	    <td><p class="text-danger"><b>{{report.amount}}</b></p></td>
+	    <td>{{report.averageM3}}</td>
+	    <td>{{report.averageKWh}}</td>
+	    <td>
+	    	<a href="{{path('report_edit', {'id':report.id})}}"><button type="button" class="btn btn-success">Edytuj</button></a>
+	    	<a href="{{path('report_delete', {'id':report.id})}}"><button type="button" class="btn btn-danger">Usuń</button></a>
+	    </td>
+	  </tr>
+{% endfor%}
+</table>
+{% endblock %}
